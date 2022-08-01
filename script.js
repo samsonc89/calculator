@@ -49,3 +49,8 @@ decimal.addEventListener("click", () => {
     return;
   } else current.textContent += ".";
 });
+
+del.addEventListener("click", () => {
+  let text = current.textContent;
+  current.textContent = text.slice(0, -1);
+});

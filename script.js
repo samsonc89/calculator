@@ -1,23 +1,14 @@
 "use strict";
 //button selectors
-const one = document.querySelector("#btn1");
-const two = document.querySelector("#btn2");
-const three = document.querySelector("#btn3");
-const four = document.querySelector("#btn4");
-const five = document.querySelector("#btn5");
-const six = document.querySelector("#btn6");
-const seven = document.querySelector("#btn7");
-const eight = document.querySelector("#btn8");
-const nine = document.querySelector("#btn9");
-const zero = document.querySelector("#btn0");
-const subtract = document.querySelector("#btn-");
-const add = document.querySelector("#btn+");
-const percent = document.querySelector("#btn%");
-const divide = document.querySelector("#btn/");
-const multiply = document.querySelector("#btnX");
-const negative = document.querySelector("#btn+-");
-const decimal = document.querySelector("#btn.");
-const equals = document.querySelector("#btn=");
+const number = document.querySelectorAll(".number");
+const subtract = document.querySelector("#btnSubtract");
+const add = document.querySelector("#btnPlus");
+const percent = document.querySelector("#btnPercent");
+const divide = document.querySelector("#btnDivide");
+const multiply = document.querySelector("#btnMultiply");
+const negative = document.querySelector("#btnNegative");
+const decimal = document.querySelector("#btnDec");
+const equals = document.querySelector("#btnEqual");
 const clear = document.querySelector("#btnClear");
 const del = document.querySelector("#btnDel");
 
@@ -26,18 +17,25 @@ const current = document.querySelector("#current");
 const total = document.querySelector("#total");
 
 //math operator functions
-function add(a, b) {
+function addFunction(a, b) {
   return a + b;
 }
-function multiply(a, b) {
+function multiplyFunction(a, b) {
   return a * b;
 }
-function subtract(a, b) {
+function subtractFunction(a, b) {
   return a - b;
 }
-function divide(a, b) {
+function divideFunction(a, b) {
   return a / b;
 }
-function percentage(a) {
+function percentageFunction(a) {
   return a / 100;
 }
+
+number.forEach((num) =>
+  num.addEventListener("click", (e) => {
+    let target = e.target;
+    current.textContent += target.textContent;
+  })
+);

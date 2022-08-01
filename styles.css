@@ -1,17 +1,22 @@
 .main {
   width: 360px;
-  height: 535px;
+  height: auto;
   border: 1px solid black;
   border-radius: 10px;
   margin: 40px auto;
 }
 
 .display {
-  height: 25%;
+  height: auto;
   border: 1px solid black;
   margin: 20px;
 }
-
+#current {
+  line-height: 25px;
+}
+#total {
+  line-height: 45px;
+}
 .operations {
   box-sizing: border-box;
   display: flex;

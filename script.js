@@ -39,3 +39,7 @@ number.forEach((num) =>
     current.textContent += target.textContent;
   })
 );
+
+clear.addEventListener("click", () => {
+  current.textContent = "";
+});

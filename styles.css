@@ -7,9 +7,10 @@
 }
 
 .display {
-  height: auto;
+  min-height: 70px;
   border: 1px solid black;
   margin: 20px;
+  overflow-wrap: break-word;
 }
 #current {
   line-height: 25px;

@@ -11,6 +11,7 @@
   border: 1px solid black;
   margin: 20px;
   overflow-wrap: break-word;
+  text-align: end;
 }
 #current {
   line-height: 25px;

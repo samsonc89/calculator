@@ -14,10 +14,11 @@
   text-align: end;
 }
 #current {
-  line-height: 25px;
+  min-height: 25px;
 }
 #total {
-  line-height: 45px;
+  font-size: 20px;
+  min-height: 45px;
 }
 .operations {
   box-sizing: border-box;

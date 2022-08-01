@@ -33,6 +33,7 @@ function percentageFunction(a) {
   return a / 100;
 }
 
+//button functions
 number.forEach((num) =>
   num.addEventListener("click", (e) => {
     let target = e.target;
@@ -53,4 +54,11 @@ decimal.addEventListener("click", () => {
 del.addEventListener("click", () => {
   let text = current.textContent;
   current.textContent = text.slice(0, -1);
+});
+
+negative.addEventListener("click", () => {
+  let text = current.textContent;
+  if (text.includes("-")) {
+    current.textContent = text.slice(1);
+  } else current.textContent = "-" + text;
 });

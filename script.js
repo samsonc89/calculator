@@ -43,3 +43,9 @@ number.forEach((num) =>
 clear.addEventListener("click", () => {
   current.textContent = "";
 });
+
+decimal.addEventListener("click", () => {
+  if (current.textContent.includes(".")) {
+    return;
+  } else current.textContent += ".";
+});

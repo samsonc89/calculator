@@ -38,10 +38,15 @@ function operate() {
   holding = false;
   return +(total.textContent = operator(hold, b));
 }
-
+function remSelected() {
+  document
+    .querySelectorAll(".operators")
+    .forEach((btn) => btn.classList.remove("selected"));
+}
 let operator = "";
 let hold = "";
 let holding = false;
+let target;
 
 function holdNum() {
   if (total.textContent != "") {
@@ -95,7 +100,9 @@ btnPercent.addEventListener("click", () => {
   current.textContent = "";
 });
 
-btnAdd.addEventListener("click", () => {
+btnAdd.addEventListener("click", (e) => {
+  remSelected();
+  e.target.classList.add("selected");
   operator = add;
   holding = true;
   holdNum();
@@ -103,6 +110,30 @@ btnAdd.addEventListener("click", () => {
 
 equals.addEventListener("click", () => {
   console.log(operate());
+  remSelected();
   hold = "";
   current.textContent = "";
+});
+
+btnSubtract.addEventListener("click", (e) => {
+  remSelected();
+  e.target.classList.add("selected");
+  operator = subtract;
+  holding = true;
+  holdNum();
+});
+
+btnMultiply.addEventListener("click", (e) => {
+  remSelected();
+  e.target.classList.add("selected");
+  operator = multiply;
+  holding = true;
+  holdNum();
+});
+btnDivide.addEventListener("click", (e) => {
+  remSelected();
+  e.target.classList.add("selected");
+  operator = divide;
+  holding = true;
+  holdNum();
 });

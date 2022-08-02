@@ -9,7 +9,7 @@ const btnMultiply = document.querySelector("#btnMultiply");
 const negative = document.querySelector("#btnNegative");
 const decimal = document.querySelector("#btnDec");
 const equals = document.querySelector("#btnEqual");
-const clear = document.querySelector("#btnClear");
+const btnClear = document.querySelector("#btnClear");
 const del = document.querySelector("#btnDel");
 
 //display selectors
@@ -36,7 +36,7 @@ function percentage(a) {
 function operate() {
   let b = +current.textContent;
   holding = false;
-  return +(total.textContent = operator(hold, b));
+  return (total.textContent = operator(hold, b));
 }
 function remSelected() {
   document
@@ -47,11 +47,13 @@ let operator = "";
 let hold = "";
 let holding = false;
 let target;
+let clearState = false;
 
 function holdNum() {
   if (total.textContent != "") {
     hold = +total.textContent;
   } else hold = +current.textContent;
+  holding = true;
 }
 
 //button functions
@@ -71,10 +73,6 @@ If operator has been selected
   clear current.textContent
   then  add text
 */
-
-clear.addEventListener("click", () => {
-  current.textContent = "";
-});
 
 decimal.addEventListener("click", () => {
   if (current.textContent.includes(".")) {
@@ -96,7 +94,10 @@ negative.addEventListener("click", () => {
 
 btnPercent.addEventListener("click", () => {
   let working = Number(current.textContent);
-  total.textContent = working / 100;
+  if (working == "") {
+    working = +total.textContent;
+    total.textContent = working / 100;
+  } else total.textContent = working / 100;
   current.textContent = "";
 });
 
@@ -104,7 +105,7 @@ btnAdd.addEventListener("click", (e) => {
   remSelected();
   e.target.classList.add("selected");
   operator = add;
-  holding = true;
+  btnClear.textContent = "C";
   holdNum();
 });
 
@@ -119,7 +120,7 @@ btnSubtract.addEventListener("click", (e) => {
   remSelected();
   e.target.classList.add("selected");
   operator = subtract;
-  holding = true;
+  btnClear.textContent = "C";
   holdNum();
 });
 
@@ -127,13 +128,28 @@ btnMultiply.addEventListener("click", (e) => {
   remSelected();
   e.target.classList.add("selected");
   operator = multiply;
-  holding = true;
+  btnClear.textContent = "C";
   holdNum();
 });
 btnDivide.addEventListener("click", (e) => {
   remSelected();
   e.target.classList.add("selected");
   operator = divide;
-  holding = true;
+  btnClear.textContent = "C";
   holdNum();
+});
+
+btnClear.addEventListener("click", () => {
+  if (hold != "" && btnClear.textContent == "C") {
+    current.textContent = "";
+    btnClear.textContent = "AC";
+  } else {
+    if ((btnClear.textContent = "AC")) {
+      hold = "";
+      current.textContent = "";
+      total.textContent = "";
+      remSelected();
+      btnClear.textContent = "C";
+    }
+  }
 });

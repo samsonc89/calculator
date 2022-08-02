@@ -35,3 +35,7 @@ button {
   border: 1px solid black;
   border-radius: 15%;
 }
+
+.selected {
+  background-color: aquamarine;
+}

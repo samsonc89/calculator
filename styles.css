@@ -1,14 +1,19 @@
+body {
+  background-color: rgb(255, 154, 154);
+}
+
 .main {
+  background-color: white;
   width: 360px;
   height: auto;
-  border: 1px solid black;
+  border: 3px solid black;
   border-radius: 10px;
   margin: 40px auto;
 }
 
 .display {
   min-height: 75px;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 4px;
   margin: 20px;
   overflow-wrap: break-word;
@@ -34,10 +39,10 @@
 button {
   width: calc(100% / 5);
   height: 60px;
-  border: 1px solid black;
+  border: 2px solid black;
   border-radius: 15%;
 }
 
 .selected {
-  background-color: aquamarine;
+  background-color: rgb(122, 203, 249);
 }

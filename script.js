@@ -58,6 +58,14 @@ function holdNum() {
   holding = true;
 }
 
+function blink(e) {
+  let target = e.target;
+  target.style.backgroundColor = "#7acbf9";
+  setTimeout(() => {
+    target.style.backgroundColor = "#efefef";
+  }, 10);
+}
+
 //button functions
 number.forEach((num) =>
   num.addEventListener("click", (e) => {
@@ -66,6 +74,7 @@ number.forEach((num) =>
     }
     holding = false;
     let target = e.target;
+    blink(e);
     current.textContent += +target.textContent;
   })
 );
@@ -76,25 +85,29 @@ If operator has been selected
   then  add text
 */
 
-decimal.addEventListener("click", () => {
+decimal.addEventListener("click", (e) => {
+  blink(e);
   if (current.textContent.includes(".")) {
     return;
   } else current.textContent += ".";
 });
 
-del.addEventListener("click", () => {
+del.addEventListener("click", (e) => {
   let text = current.textContent;
   current.textContent = text.slice(0, -1);
+  blink(e);
 });
 
-negative.addEventListener("click", () => {
+negative.addEventListener("click", (e) => {
+  blink(e);
   let text = current.textContent;
   if (text.includes("-")) {
     current.textContent = text.slice(1);
   } else current.textContent = "-" + text;
 });
 
-btnPercent.addEventListener("click", () => {
+btnPercent.addEventListener("click", (e) => {
+  blink(e);
   let working = Number(current.textContent);
   if (working == "") {
     working = +total.textContent;
@@ -111,8 +124,9 @@ btnAdd.addEventListener("click", (e) => {
   holdNum();
 });
 
-equals.addEventListener("click", () => {
-  console.log(operate());
+equals.addEventListener("click", (e) => {
+  blink(e);
+  operate();
   remSelected();
   hold = "";
   current.textContent = "";
@@ -141,7 +155,8 @@ btnDivide.addEventListener("click", (e) => {
   holdNum();
 });
 
-btnClear.addEventListener("click", () => {
+btnClear.addEventListener("click", (e) => {
+  blink(e);
   if (hold != "" && btnClear.textContent == "C") {
     current.textContent = "";
     btnClear.textContent = "AC";

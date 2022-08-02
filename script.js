@@ -68,7 +68,8 @@ function blink(e) {
 const buttons = document.querySelectorAll("button");
 buttons.forEach((btn) =>
   btn.addEventListener("click", (e) => {
-    blink(e);
+    if (btn.classList.contains("operators")) {
+    } else blink(e);
   })
 );
 //button functions

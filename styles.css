@@ -41,8 +41,9 @@ button {
   height: 60px;
   border: 2px solid black;
   border-radius: 15%;
+  background-color: white;
 }
 
 .selected {
-  background-color: rgb(122, 203, 249);
+  background-color: #7acbf9;
 }

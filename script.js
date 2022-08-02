@@ -27,7 +27,9 @@ function subtract(a, b) {
   return a - b;
 }
 function divide(a, b) {
-  return a / b;
+  if (b == 0) {
+    return "ERROR";
+  } else return a / b;
 }
 function percentage(a) {
   return a / 100;

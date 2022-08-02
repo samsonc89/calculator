@@ -65,7 +65,12 @@ function blink(e) {
     target.style.backgroundColor = "#efefef";
   }, 10);
 }
-
+const buttons = document.querySelectorAll("button");
+buttons.forEach((btn) =>
+  btn.addEventListener("click", (e) => {
+    blink(e);
+  })
+);
 //button functions
 number.forEach((num) =>
   num.addEventListener("click", (e) => {
@@ -74,7 +79,6 @@ number.forEach((num) =>
     }
     holding = false;
     let target = e.target;
-    blink(e);
     current.textContent += +target.textContent;
   })
 );
@@ -85,29 +89,25 @@ If operator has been selected
   then  add text
 */
 
-decimal.addEventListener("click", (e) => {
-  blink(e);
+decimal.addEventListener("click", () => {
   if (current.textContent.includes(".")) {
     return;
   } else current.textContent += ".";
 });
 
-del.addEventListener("click", (e) => {
+del.addEventListener("click", () => {
   let text = current.textContent;
   current.textContent = text.slice(0, -1);
-  blink(e);
 });
 
-negative.addEventListener("click", (e) => {
-  blink(e);
+negative.addEventListener("click", () => {
   let text = current.textContent;
   if (text.includes("-")) {
     current.textContent = text.slice(1);
   } else current.textContent = "-" + text;
 });
 
-btnPercent.addEventListener("click", (e) => {
-  blink(e);
+btnPercent.addEventListener("click", () => {
   let working = Number(current.textContent);
   if (working == "") {
     working = +total.textContent;
@@ -124,8 +124,7 @@ btnAdd.addEventListener("click", (e) => {
   holdNum();
 });
 
-equals.addEventListener("click", (e) => {
-  blink(e);
+equals.addEventListener("click", () => {
   operate();
   remSelected();
   hold = "";
@@ -155,8 +154,7 @@ btnDivide.addEventListener("click", (e) => {
   holdNum();
 });
 
-btnClear.addEventListener("click", (e) => {
-  blink(e);
+btnClear.addEventListener("click", () => {
   if (hold != "" && btnClear.textContent == "C") {
     current.textContent = "";
     btnClear.textContent = "AC";

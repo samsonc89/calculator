@@ -41,9 +41,10 @@ button {
   height: 60px;
   border: 2px solid black;
   border-radius: 15%;
-  background-color: white;
 }
-
+.operators {
+  background-color: rgb(255, 217, 120);
+}
 .selected {
   background-color: #7acbf9;
 }

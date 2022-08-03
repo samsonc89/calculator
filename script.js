@@ -172,5 +172,11 @@ document.querySelector("body").addEventListener("keydown", (e) => {
   if (e.key == "Backspace") {
     let text = current.textContent;
     current.textContent = text.slice(0, -1);
+  } else if (typeof +e.key == "number") {
+    if (holding == true) {
+      current.textContent = "";
+    }
+    holding = false;
+    current.textContent += +e.key;
   }
 });

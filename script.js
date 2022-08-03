@@ -7,7 +7,7 @@ const btnPercent = document.querySelector("#btnPercent");
 const btnDivide = document.querySelector("#btnDivide");
 const btnMultiply = document.querySelector("#btnMultiply");
 const negative = document.querySelector("#btnNegative");
-const decimal = document.querySelector("#btnDec");
+const btnDecimal = document.querySelector("#btnDec");
 const equals = document.querySelector("#btnEqual");
 const btnClear = document.querySelector("#btnClear");
 const del = document.querySelector("#btnDel");
@@ -89,7 +89,7 @@ number.forEach((num) =>
   })
 );
 
-decimal.addEventListener("click", () => {
+btnDecimal.addEventListener("click", () => {
   if (current.textContent.includes(".")) {
     return;
   } else current.textContent += ".";
@@ -171,10 +171,8 @@ btnClear.addEventListener("click", () => {
 document.querySelector("body").addEventListener("keydown", (e) => {
   e.preventDefault();
   if (e.key == "Backspace") {
-    let text = current.textContent;
-    current.textContent = text.slice(0, -1);
+    del.click();
   } else if (e.key <= 9) {
-    console.log(e.key, typeof e.key);
     if (holding == true) {
       current.textContent = "";
     }
@@ -182,5 +180,19 @@ document.querySelector("body").addEventListener("keydown", (e) => {
     current.textContent += +e.key;
   } else if (e.key == "Enter") {
     equals.click();
-  }
+  } else if (e.key == "*") {
+    btnMultiply.click();
+  } else if (e.key == "+") {
+    btnAdd.click();
+  } else if (e.key == "-") {
+    btnSubtract.click();
+  } else if (e.key == "/") {
+    btnDivide.click();
+  } else if (e.key == "%") {
+    btnPercent.click();
+  } else if (e.key == ".") {
+    btnDecimal.click();
+  } else if (e.key == "c") {
+    btnClear.click();
+  } else return;
 });

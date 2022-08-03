@@ -115,9 +115,9 @@ btnPercent.addEventListener("click", () => {
   current.textContent = "";
 });
 
-btnAdd.addEventListener("click", (e) => {
+btnAdd.addEventListener("click", () => {
   remSelected();
-  e.target.classList.add("selected");
+  btnAdd.classList.add("selected");
   operator = add;
   btnClear.textContent = "C";
   holdNum();
@@ -130,24 +130,24 @@ equals.addEventListener("click", () => {
   current.textContent = "";
 });
 
-btnSubtract.addEventListener("click", (e) => {
+btnSubtract.addEventListener("click", () => {
   remSelected();
-  e.target.classList.add("selected");
+  btnSubtract.classList.add("selected");
   operator = subtract;
   btnClear.textContent = "C";
   holdNum();
 });
 
-btnMultiply.addEventListener("click", (e) => {
+btnMultiply.addEventListener("click", () => {
   remSelected();
-  e.target.classList.add("selected");
+  btnMultiply.classList.add("selected");
   operator = multiply;
   btnClear.textContent = "C";
   holdNum();
 });
-btnDivide.addEventListener("click", (e) => {
+btnDivide.addEventListener("click", () => {
   remSelected();
-  e.target.classList.add("selected");
+  btnDivide.classList.add("selected");
   operator = divide;
   btnClear.textContent = "C";
   holdNum();
@@ -169,14 +169,18 @@ btnClear.addEventListener("click", () => {
 });
 
 document.querySelector("body").addEventListener("keydown", (e) => {
+  e.preventDefault();
   if (e.key == "Backspace") {
     let text = current.textContent;
     current.textContent = text.slice(0, -1);
-  } else if (typeof +e.key == "number") {
+  } else if (e.key <= 9) {
+    console.log(e.key, typeof e.key);
     if (holding == true) {
       current.textContent = "";
     }
     holding = false;
     current.textContent += +e.key;
+  } else if (e.key == "Enter") {
+    equals.click();
   }
 });

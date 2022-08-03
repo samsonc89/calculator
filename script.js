@@ -58,6 +58,11 @@ function holdNum() {
   holding = true;
 }
 
+function delNum() {
+  let text = current.textContent;
+  current.textContent = text.slice(0, -1);
+}
+
 function blink(e) {
   let target = e.target;
   target.style.backgroundColor = "#7acbf9";
@@ -84,12 +89,6 @@ number.forEach((num) =>
   })
 );
 
-/*
-If operator has been selected
-  clear current.textContent
-  then  add text
-*/
-
 decimal.addEventListener("click", () => {
   if (current.textContent.includes(".")) {
     return;
@@ -97,8 +96,7 @@ decimal.addEventListener("click", () => {
 });
 
 del.addEventListener("click", () => {
-  let text = current.textContent;
-  current.textContent = text.slice(0, -1);
+  delNum();
 });
 
 negative.addEventListener("click", () => {
@@ -167,5 +165,12 @@ btnClear.addEventListener("click", () => {
       remSelected();
       btnClear.textContent = "C";
     }
+  }
+});
+
+document.querySelector("body").addEventListener("keydown", (e) => {
+  if (e.key == "Backspace") {
+    let text = current.textContent;
+    current.textContent = text.slice(0, -1);
   }
 });
